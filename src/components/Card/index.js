@@ -1,20 +1,19 @@
-import React from 'react';
-import { Container, Label } from './styles';
+import React from 'react'
+import { Container, Label } from './styles'
 
-export default function Card() {
-  return (
-    <>
-    <Container >
-      <header>
-        <Label color="#7159c1" />
-        
-        <p>
-          Fazer migração completa de servidor.
-        </p>
+export default function Card({ data }) {
+	return (
+		<>
+			<Container>
+				<header>
+					{data.labels.map((label) => (
+						<Label color={label} key={label} />
+					))}
+				</header>
 
-        <img src="https://heartofamericagroup.com/wp-content/uploads/2019/04/generic-avatar.jpg" />
-      </header>
-    </Container>
-    </>
-  );
+				<p>{data.content}</p>
+				{data.user && <img src={data.user} alt="" />}
+			</Container>
+		</>
+	)
 }
